@@ -3,23 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Categoria;
+use App\Models\Cliente;
 
-class CategoriaController extends Controller
+class ClienteController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-       $categoria = Categoria::all();
+        $cliente = Cliente::all();
 
-       return view('categoria.index', compact('categoria'));
+        return view('cliente.index', compact('cliente'));
     }
 
+    /**
+     * Show the form for creating a new resource.
+     */
     public function create()
     {
-       return view ('categoria.create');
+        return view ('cliente.create');
     }
 
     /**
@@ -27,11 +30,14 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        $categoria = new Categoria([
-            'nomeCategoria' => $request->input('nomeCategoria')
+        $cliente = new Cliente([
+            'nome' => $request->input('nome'),
+            'email' => $request->input('email'),
+            'tel' => $request->input('tel'),
+            'endereco' => $request->input('endereco')
         ]);
-        $categoria->save();
-        return redirect()->route('categoria.index');
+        $cliente->save();
+        return redirect()->route('cliente.index');
     }
 
     /**
