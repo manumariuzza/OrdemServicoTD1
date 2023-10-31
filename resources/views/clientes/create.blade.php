@@ -60,19 +60,19 @@
                     @csrf
                     <div class="form-group">
                         <label for="nome">Nome:</label>
-                        <input type="text" name="nome">
+                        <input type="text" name="nome" required>
                     </div>
                     <div class="form-group">
                         <label for="email">E-mail:</label>
-                        <input type="text" name="email">
+                        <input type="text" name="email" required>
                     </div>
                     <div class="form-group">
                         <label for="endereco">Endereço:</label>
-                        <input type="text" name="endereco">
+                        <input type="text" name="endereco" required>
                     </div>
                     <div class="form-group">
                         <label for="tel">Telefone:</label>
-                        <input type="text" name="tel">
+                        <input type="text" name="tel" required>
                     </div>
                         <button type="submit" class="btn btn-primary">Salvar</button>
                         <a href="{{ route('clientes.index') }}" class="btn btn-secondary">Cancelar</a>

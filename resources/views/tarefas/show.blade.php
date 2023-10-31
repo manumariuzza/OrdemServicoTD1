@@ -4,7 +4,7 @@
         <h1>Detalhes da Tarefa </h1>
         <ul>
             <li><strong>ID:</strong> {{ $tarefa->id }}</li>
-            <li><strong>Nome Tarefa:</strong> {{ $tarefa->nomeTarefa }}</li>
+            <li><strong>Tarefa:</strong> {{ $tarefa->nomeTarefa }}</li>
             <li><strong>Cliente:</strong> {{  $tarefa->cliente_id }}</li>
             <li><strong>Categoria:</strong> {{  $tarefa->categoria_id }}</li>
             <li><strong>Observação:</strong> {{ $tarefa->observacao }}</li>

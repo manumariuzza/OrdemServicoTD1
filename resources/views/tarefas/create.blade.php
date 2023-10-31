@@ -75,7 +75,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="categoria_id">Cliente</label>
+                        <label for="categoria_id">Categoria</label>
                         <select class="form-control" name="categoria_id" required>
                             <option value="">Selecione uma categorias</option>
                             @foreach($categorias as $categoria)

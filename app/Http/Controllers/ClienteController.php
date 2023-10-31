@@ -31,13 +31,15 @@ class ClienteController extends Controller
     public function store(Request $request)
     {
         $cliente = new Cliente([
-            'nome' => $request->input('nome'),
-            'email' => $request->input('email'),
-            'tel' => $request->input('tel'),
-            'endereco' => $request->input('endereco')
+            'nome' => 'required|string|max:100',
+            'email' => 'required|string|max:100',
+            'tel' => 'required|max:15',
+            'endereco' => 'required|string|max:200',
         ]);
-        $cliente->save();
-        return redirect()->route('clientes.index');
+
+        Cliente::create($request->all());
+
+        return redirect()->route('clientes.index')->with('success', 'Cliente criado com sucesso!');
     }
 
     /**

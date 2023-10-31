@@ -35,12 +35,12 @@ class TarefaController extends Controller
     {
      
         $request->validate([
-            'categorias_id' => 'required',
-            'clientes_id' => 'required',
-            'dataFim' => 'nullable|date',
-            'dataInicio' => 'nullable|date',
+            'categorias_id' => 'required|exists:categoria_id,id',
+            'clientes_id' => 'required|exists:cliente_id,id',
+            'dataFim' => 'date',
+            'dataInicio' => 'date',
             'nomeTarefa' => 'required|string|max:100',
-            'observacao' => 'required|string|max:255'
+            'observacao' => 'required|string|max:255',
         ]);
 
         Tarefa::create($request->all());

@@ -55,7 +55,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                <form action="{{ route('tarefa.store') }}" method="POST">
+                <form action="{{ route('tarefas.edit') }}" method="POST">
                     <!-- Token CSRF para proteção contra ataques CSRF -->
                     @csrf
                     <div class="form-group">
@@ -83,7 +83,7 @@
                         <input type="date" name="dataInicio" value="{{ $tarefa->dataInicio }}">
                     </div>
                         <button type="submit" class="btn btn-success">Salvar</button>
-                        <a href="{{ route('tarefa.index') }}" class="btn btn-secondary">Cancelar</a>
+                        <a href="{{ route('tarefas.index') }}" class="btn btn-secondary">Cancelar</a>
                 </form>
                 </div>
             </div>
