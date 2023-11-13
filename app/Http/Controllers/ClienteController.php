@@ -12,9 +12,9 @@ class ClienteController extends Controller
      */
     public function index()
     {
-        $cliente = Cliente::all();
+        $clientes = Cliente::all();
 
-        return view('cliente.index', compact('cliente'));
+        return view('clientes.index', compact('clientes'));
     }
 
     /**
@@ -22,7 +22,7 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        return view ('cliente.create');
+        return view ('clientes.create');
     }
 
     /**
@@ -31,21 +31,26 @@ class ClienteController extends Controller
     public function store(Request $request)
     {
         $cliente = new Cliente([
-            'nome' => $request->input('nome'),
-            'email' => $request->input('email'),
-            'tel' => $request->input('tel'),
-            'endereco' => $request->input('endereco')
+            'nome' => 'required|string|max:100',
+            'email' => 'required|string|max:100',
+            'tel' => 'required|max:15',
+            'endereco' => 'required|string|max:200',
         ]);
-        $cliente->save();
-        return redirect()->route('cliente.index');
+
+        Cliente::create($request->all());
+
+        return redirect()->route('clientes.index')->with('success', 'Cliente criado com sucesso!');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show($id)
     {
-        //
+        // Encontra um autor no banco de dados com o ID fornecido
+       $cliente = Cliente::findOrFail($id);
+       // Retorna a view 'autores.show' e passa o autor como parâmetro
+       return view('clientes.show', compact('cliente'));
     }
 
     /**
@@ -53,7 +58,10 @@ class ClienteController extends Controller
      */
     public function edit(string $id)
     {
-        //
+         // Encontra um autor no banco de dados com o ID fornecido
+         $cliente = Cliente::findOrFail($id);
+         // Retorna a view 'autores.edit' e passa o autor como parâmetro
+         return view('clientes.edit', compact('cliente'));
     }
 
     /**
@@ -61,14 +69,27 @@ class ClienteController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+         $cliente = Cliente::findOrFail($id);
+         
+         $cliente->nome = $request->input('nome');
+         $cliente->email = $request->input('email');
+         $cliente->tel = $request->input('tel');
+         $cliente->endereco = $request->input('endereco');
+
+         $cliente->save();
+         return redirect()->route('clientes.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        // Encontra um autor no banco de dados com o ID fornecido
+        $cliente = Cliente::findOrFail($id);
+        // Exclui o autor do banco de dados
+        $cliente->delete();
+        // Redireciona para a rota 'autores.index' após excluir
+        return redirect()->route('clientes.index');
     }
 }

@@ -12,14 +12,14 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-       $categoria = Categoria::all();
+       $categorias = Categoria::all();
 
-       return view('categoria.index', compact('categoria'));
+       return view('categorias.index', compact('categorias'));
     }
 
     public function create()
     {
-       return view ('categoria.create');
+       return view ('categorias.create');
     }
 
     /**
@@ -31,7 +31,7 @@ class CategoriaController extends Controller
             'nomeCategoria' => $request->input('nomeCategoria')
         ]);
         $categoria->save();
-        return redirect()->route('categoria.index');
+        return redirect()->route('categorias.create');
     }
 
     /**
@@ -39,7 +39,10 @@ class CategoriaController extends Controller
      */
     public function show(string $id)
     {
-        //
+       // Encontra um autor no banco de dados com o ID fornecido
+       $categoria = Categoria::findOrFail($id);
+       // Retorna a view 'autores.show' e passa o autor como parâmetro
+       return view('categorias.show', compact('categoria'));
     }
 
     /**
@@ -47,7 +50,10 @@ class CategoriaController extends Controller
      */
     public function edit(string $id)
     {
-        //
+         // Encontra um autor no banco de dados com o ID fornecido
+         $categoria = Categoria::findOrFail($id);
+         // Retorna a view 'autores.edit' e passa o autor como parâmetro
+         return view('categorias.edit', compact('categoria'));
     }
 
     /**
@@ -55,7 +61,11 @@ class CategoriaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $categoria = Categoria::findOrFail($id);
+        $categoria->nomeCategoria = $request->input('nomeCategoria');
+        
+        $categoria->save();
+        return redirect()->route('categorias.index');
     }
 
     /**
@@ -63,6 +73,11 @@ class CategoriaController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // Encontra um autor no banco de dados com o ID fornecido
+        $categoria = Categoria::findOrFail($id);
+        // Exclui o autor do banco de dados
+        $categoria->delete();
+        // Redireciona para a rota 'autores.index' após excluir
+        return redirect()->route('categorias.index');
     }
 }

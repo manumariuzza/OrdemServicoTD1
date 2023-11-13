@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\TarefaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,7 +30,8 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-Route::resource('categoria', CategoriaController::class);
-Route::resource('cliente', ClienteController::class);
+Route::resource('categorias', CategoriaController::class);
+Route::resource('clientes', ClienteController::class);
+Route::resource('tarefas', TarefaController::class);
 
 require __DIR__.'/auth.php';
