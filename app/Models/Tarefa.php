@@ -10,7 +10,8 @@ class Tarefa extends Model
     use HasFactory;
 
     protected $table = 'tarefas';
-    protected $fillable = [ 'categorias_id', 'clientes_id', 'dataFim','dataInicio', 'nomeTarefa', 'observacao'];
+    // protected $fillable = [ 'categorias_id', 'clientes_id', 'dataFim','dataInicio', 'nomeTarefa', 'observacao'];
+    protected $fillable = [ 'nomeTarefa', 'observacao', 'cliente_id','categoria_id', 'dataFim', 'dataInicio'];
 
     public function cliente() {
         return $this->belongsTo(Cliente::class);

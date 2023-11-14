@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tarefa', function (Blueprint $table) {
+        Schema::create('tarefas', function (Blueprint $table) {
             $table->id();
             $table->string('nomeTarefa');
             $table->date('dataInicio');
@@ -19,8 +19,8 @@ return new class extends Migration
             $table->text('observacao');
             $table->unsignedBigInteger('categoria_id');
             $table->unsignedBigInteger('cliente_id');
-            $table->foreign('categoria_id')->references('id')->on('categoria');
-            $table->foreign('cliente_id')->references('id')->on('cliente');
+            $table->foreign('categoria_id')->references('id')->on('categorias');
+            $table->foreign('cliente_id')->references('id')->on('clientes');
             $table->timestamps();
         });
     }

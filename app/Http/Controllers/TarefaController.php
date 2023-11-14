@@ -33,15 +33,23 @@ class TarefaController extends Controller
      */
     public function store(Request $request)
     {
-     
+        $messages = [
+            'nomeTarefa.required' => 'É necessário preencher o campo título.',
+            'observacao.required'  => 'É necessário preencher o campo resumo.',
+            'cliente_id.required' => 'É necessário preencher o campo título.',
+            'categoria_id.required'  => 'É necessário preencher o campo resumo.',
+            'dataFim.date' => 'É necessário preencher o campo título.',
+            'dataInicio.date'  => 'É necessário preencher o campo resumo.',
+        ];
+
         $request->validate([
-            'categorias_id' => 'required|exists:categoria_id,id',
-            'clientes_id' => 'required|exists:cliente_id,id',
-            'dataFim' => 'date',
-            'dataInicio' => 'date',
             'nomeTarefa' => 'required|string|max:100',
             'observacao' => 'required|string|max:255',
-        ]);
+            'cliente_id' => 'required|exists:clientes,id',
+            'categoria_id' => 'required|exists:categorias,id',
+            'dataFim' => 'date',
+            'dataInicio' => 'date'
+        ],$messages);
 
         Tarefa::create($request->all());
 

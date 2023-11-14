@@ -69,6 +69,7 @@
                     <div class="form-group">
                         <label for="cliente_id">Cliente</label>
                         <select class="form-control" name="cliente_id" required>
+                            <option value="">Selecione um cliente</option>
                             @foreach($clientes as $cliente)
                                 <option value="{{ $cliente->id }}">{{ $cliente->nome }}</option>
                             @endforeach
@@ -99,7 +100,8 @@
             </div>
         </div>
     </div>
-</x-app-layout>
+
 </body>
 </html>
+</x-app-layout>
 

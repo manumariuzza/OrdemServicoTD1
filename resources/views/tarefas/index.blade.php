@@ -21,8 +21,8 @@
                     <tr>
                         <td> {{ $tarefa->id }}</td>
                         <td> {{ $tarefa->nomeTarefa}}</td>
-                        <td> {{ $tarefa->categorias->nomeCategoria ?? ''}}</td>
-                        <td> {{ $tarefa->clientes->nome ?? ''}}</td>
+                        <td> {{ $tarefa->categoria->nomeCategoria ?? ''}}</td>
+                        <td> {{ $tarefa->cliente->nome ?? ''}}</td>
                         <td> {{ $tarefa->observacao}}</td>
                         <td> {{ $tarefa->dataInicio}}</td>
                         <td> {{ $tarefa->dataFim}}</td>
