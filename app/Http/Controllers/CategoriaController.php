@@ -10,10 +10,12 @@ class CategoriaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-       $categorias = Categoria::all();
-
+       $search = $request->input('search');
+       $categorias = Categoria::where('nomeCategoria', 'like', '%'.$search.'%')
+                        ->paginate(10);
+                        
        return view('categorias.index', compact('categorias'));
     }
 
@@ -27,11 +29,13 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        $categoria = new Categoria([
-            'nomeCategoria' => $request->input('nomeCategoria')
+        $request->validate([
+            'nomeCategoria'=>'required|max:100',
         ]);
-        $categoria->save();
-        return redirect()->route('categorias.create');
+
+        Categoria::create($request->all());
+
+        return redirect()->route('categorias.index')->with('success', 'Categoria criada com sucesso!');
     }
 
     /**

@@ -15,7 +15,7 @@ class ClienteSeeder extends Seeder
         $numeroDeCliente = 10;
 
         for ($i = 0; $i < $numeroDeCliente; $i++) {
-            \DB::table('cliente')->insert([
+            \DB::table('clientes')->insert([
                 'nome' => $faker->name,
                 'email' => $faker->email,
                 'tel'=> $faker->phoneNumber,

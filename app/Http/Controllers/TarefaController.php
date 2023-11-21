@@ -12,9 +12,12 @@ class TarefaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $tarefas = Tarefa::all();
+        $search = $request->input('search');
+        $tarefas = Tarefa::where('nomeTarefa', 'like', '%'.$search.'%')
+                         ->orWhere('observacao', 'like', '%'.$search.'%')
+                         ->paginate(10);
         return view('tarefas.index', compact('tarefas'));
     }
 
@@ -33,10 +36,9 @@ class TarefaController extends Controller
      */
     public function store(Request $request)
     {
-     
         $request->validate([
-            'categorias_id' => 'required|exists:categoria_id,id',
-            'clientes_id' => 'required|exists:cliente_id,id',
+            'cliente_id' => 'required|exists:clientes,id',
+            'categoria_id' => 'required|exists:categorias,id',
             'dataFim' => 'date',
             'dataInicio' => 'date',
             'nomeTarefa' => 'required|string|max:100',
