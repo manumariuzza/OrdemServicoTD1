@@ -30,7 +30,7 @@
                     <label for="tel">Telefone:</label>
                     <input type="text" name="tel" required>
                 </div>
-                <button type="submit" class="btn btn-primary">Salvar</button>
+                <button type="submit" class="btn btn-success">Salvar</button>
                 <a href="{{ route('clientes.index') }}" class="btn btn-secondary">Cancelar</a>
             </form>
         </div>

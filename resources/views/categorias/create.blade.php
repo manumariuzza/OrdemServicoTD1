@@ -18,7 +18,7 @@
                     <label for="nome">Nome da categoria:</label>
                     <input type="text" name="nomeCategoria" required>
                 </div>
-                <button type="submit" name="salvarCategoria">Salvar</button>
+                <button type="submit" name="salvarCategoria" class="btn btn-success">Salvar</button>
                 <a href="{{ route('categorias.index') }}" class="btn btn-secondary">Cancelar</a>
             </form>
         </div>

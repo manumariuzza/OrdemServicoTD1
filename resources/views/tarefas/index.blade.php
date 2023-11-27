@@ -9,20 +9,7 @@
                 <div class="search-container">
                     <input type="text" name="search" placeholder="Pesquisar tarefas..."
                         value="{{ request()->query('search') }}" class="search-input">
-                    <button type="submit" class="search-button" 
-                    style="color:#fff; 
-                    border:1px solid transparent;
-                    border-radius: 4px;  
-                    background-color: #8456ce;
-                    border-color: #000000; padding: 6px 12px;
-                    margin-bottom: 0;
-                    font-size: 14px;
-                    font-weight: 400;
-                    line-height: 1.42857143;
-                    text-align: center;
-                    white-space: nowrap;
-                    vertical-align: middle;
-                    cursor: pointer;">Pesquisar</button>
+                    <button type="submit" class="search-button">Pesquisar</button>
                 </div>
             </div>
         </form>

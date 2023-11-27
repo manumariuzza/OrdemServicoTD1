@@ -48,7 +48,7 @@
                         <label for="dataFim">Data Fim:</label>
                         <input type="date" name="dataFim" required>
                     </div>
-                    <button type="submit" class="btn btn-success">Salvar</button>
+                    <button type="submit"class="btn btn-success">Salvar</button>
                     <a href="{{ route('tarefas.index') }}" class="btn btn-secondary">Cancelar</a>
                 </form>
             </div>
